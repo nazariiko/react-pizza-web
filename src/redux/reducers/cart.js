@@ -8,6 +8,10 @@ const cart = (state = initialState, action) => {
 
   switch (action.type) {
     case 'ADD_PIZZA_TO_CART': {
+
+    
+
+
       const newItems = {
         ...state.items, 
         [action.payload.id]: !state.items[action.payload.id]
@@ -22,12 +26,6 @@ const cart = (state = initialState, action) => {
         totalPrice: [].concat.apply([], Object.values(newItems)).reduce((sum, obj) => obj.price + sum, 0)
       }
     }
-      
-    case 'SET_TOTAL_COUNT':
-      return {
-        ...state,
-        totalCount: action.payload,
-      }
     default:
       return state;
   }
