@@ -1,13 +1,28 @@
 import React from 'react'
 import { CartItem } from '../components'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { minusPizza, plusPizza, deletePizzafromCart } from '../redux/actions/cart'
 
 function Cart() {
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart)
+  const dispatch = useDispatch();
 
   const addedPizzas = Object.keys(items).map((key) => {
-    return items[key][0]
+    return items[key]
   });
+
+  const minusPizza = React.useCallback((id) => {
+    // dispatch(minusPizza(id))
+    console.log('minus');
+  }, []);
+
+  const plusPizza = React.useCallback((id) => {
+    // dispatch(plusPizza(id))
+  }, []);
+
+  const deletePizzafromCart = React.useCallback((id) => {
+    // dispatch(deletePizzafromCart(id))
+  }, []);
 
   return (
     <div className="container container--cart">
@@ -33,11 +48,20 @@ function Cart() {
           </div>
         </div>
         <div className="content__items">
-
           {
-            addedPizzas.map(obj => <CartItem name={obj.name} type={obj.type} size={obj.size} />)
+            addedPizzas.map(obj => <CartItem
+              id={obj.currentIdItems[0].id}
+              name={obj.currentIdItems[0].name}
+              type={obj.currentIdItems[0].type}
+              size={obj.currentIdItems[0].size}
+              totalCountById={obj.totalCountById}
+              totalPriceById={obj.totalPriceById}
+              key={obj.currentIdItems[0].name}
+              minusPizza={minusPizza}
+              plusPizza={plusPizza}
+              deletePizzafromCart={deletePizzafromCart}
+            />)
           }
-
         </div>
         <div className="cart__bottom">
           <div className="cart__bottom-details">
@@ -49,7 +73,6 @@ function Cart() {
               <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-
               <span>Вернуться назад</span>
             </a>
             <div className="button pay-btn">
