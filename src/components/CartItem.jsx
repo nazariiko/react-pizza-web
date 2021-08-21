@@ -1,20 +1,23 @@
 import React from 'react'
 import { Button } from '../components'
 
-function CartItem({ id, name, type, size, totalCountById, totalPriceById, minusPizza, plusPizza, deletePizzafromCart }) {
+function CartItem({ id, name, imageUrl, type, size, totalCountById, totalPriceById, minusPizza, plusPizza, deletePizzafromCart }) {
+
 
 
   const onPlusPizza = (id) => {
     plusPizza(id)
   }
 
-  const onMinusPizza = (id) => [
+  const onMinusPizza = (id) => {
     minusPizza(id)
-  ]
+  }
 
   const onDeletePizza = (id) => {
     deletePizzafromCart(id)
   }
+
+  console.log('Cart-item rendered');
 
   return (
 
@@ -22,7 +25,7 @@ function CartItem({ id, name, type, size, totalCountById, totalPriceById, minusP
       <div className="cart__item-img">
         <img
           className="pizza-block__image"
-          src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+          src={imageUrl}
           alt="Pizza"
         />
       </div>

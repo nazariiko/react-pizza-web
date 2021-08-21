@@ -1,7 +1,9 @@
 import React from 'react'
-import { CartItem } from '../components'
+import { Link } from 'react-router-dom'
+
+import { CartItem, Button } from '../components'
 import { useSelector, useDispatch } from 'react-redux'
-import { minusPizza, plusPizza, deletePizzafromCart } from '../redux/actions/cart'
+import { minusPizza, plusPizza, deletePizzafromCart, clearCart } from '../redux/actions/cart'
 
 function Cart() {
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart)
@@ -11,17 +13,20 @@ function Cart() {
     return items[key]
   });
 
-  const minusPizza = React.useCallback((id) => {
-    // dispatch(minusPizza(id))
-    console.log('minus');
+  const onMinusPizza = React.useCallback((id) => {
+    dispatch(minusPizza(id))
   }, []);
 
-  const plusPizza = React.useCallback((id) => {
-    // dispatch(plusPizza(id))
+  const onPlusPizza = React.useCallback((id) => {
+    dispatch(plusPizza(id))
   }, []);
 
-  const deletePizzafromCart = React.useCallback((id) => {
-    // dispatch(deletePizzafromCart(id))
+  const onDeletePizzafromCart = React.useCallback((id) => {
+    dispatch(deletePizzafromCart(id))
+  }, []);
+
+  const onClearCart = React.useCallback(() => {
+    dispatch(clearCart())
   }, []);
 
   return (
@@ -44,7 +49,7 @@ function Cart() {
               <path d="M11.6666 9.16667V14.1667" stroke="#B6B6B6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
 
-            <span>Очистить корзину</span>
+            <span onClick={onClearCart}>Очистить корзину</span>
           </div>
         </div>
         <div className="content__items">
@@ -53,13 +58,14 @@ function Cart() {
               id={obj.currentIdItems[0].id}
               name={obj.currentIdItems[0].name}
               type={obj.currentIdItems[0].type}
+              imageUrl={obj.currentIdItems[0].imageUrl}
               size={obj.currentIdItems[0].size}
               totalCountById={obj.totalCountById}
               totalPriceById={obj.totalPriceById}
               key={obj.currentIdItems[0].name}
-              minusPizza={minusPizza}
-              plusPizza={plusPizza}
-              deletePizzafromCart={deletePizzafromCart}
+              minusPizza={onMinusPizza}
+              plusPizza={onPlusPizza}
+              deletePizzafromCart={onDeletePizzafromCart}
             />)
           }
         </div>
@@ -69,12 +75,14 @@ function Cart() {
             <span> Сумма заказа: <b>{totalPrice} ₽</b> </span>
           </div>
           <div className="cart__bottom-buttons">
-            <a href="/" className="button button--outline button--add go-back-btn">
-              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span>Вернуться назад</span>
-            </a>
+            <Link to="/">
+              <Button className="button button--outline button--add go-back-btn">
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>Вернуться назад</span>
+              </Button>
+            </Link>
             <div className="button pay-btn">
               <span>Оплатить сейчас</span>
             </div>

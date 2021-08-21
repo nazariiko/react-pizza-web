@@ -9,7 +9,7 @@ export const fetchPizzas = (category, sortName) => (dispatch) => {
   dispatch(setLoaded(false));
   setTimeout(() => axios.get(`/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortName}&_order=asc`).then(({ data }) => {
     dispatch(setPizzas(data))
-  }), 500);
+  }), 300);
 }
 
 export const setPizzas = (items) => ({
