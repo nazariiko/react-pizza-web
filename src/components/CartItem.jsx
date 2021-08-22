@@ -3,8 +3,6 @@ import { Button } from '../components'
 
 function CartItem({ id, name, imageUrl, type, size, totalCountById, totalPriceById, minusPizza, plusPizza, deletePizzafromCart }) {
 
-
-
   const onPlusPizza = (id) => {
     plusPizza(id)
   }
