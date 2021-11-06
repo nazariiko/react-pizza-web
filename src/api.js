@@ -1,0 +1,1 @@
+export const JSON_API = 'https://react-pizza-nazariiko.herokuapp.com/api'
