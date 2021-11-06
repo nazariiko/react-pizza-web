@@ -99,6 +99,37 @@
       "price": 285,
       "category": 5,
       "rating": 7
+    },
+    {
+      "id": 10,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/7ab909f55a5d480484fad99c145bb895_292x292.jpeg",
+      "name": "Микс",
+      "types": [0, 1],
+      "sizes": [26, 40],
+      "price": 567,
+      "category": 3,
+      "rating": 7
+    },
+    {
+      "id": 11,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/3eeedd0bdf8d4cf488ee43dc1e8aab6e_292x292.jpeg",
+      "name": "Двойная пепперони",
+      "types": [0, 1],
+      "sizes": [26],
+      "price": 876,
+      "category": 4,
+      "rating": 12
+    },
+    {
+      "id": 12,
+      "imageUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/3327d3dd-1feb-443f-97b6-731fa8e64fac.jpg",
+      "name": "Пицца пирог",
+      "types": [0, 1],
+      "sizes": [26, 40],
+      "price": 450,
+      "category": 1,
+      "rating": 5
     }
+    
   ]
 }

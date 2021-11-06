@@ -1,12 +1,15 @@
-import React from 'react'
-import propTypes from 'prop-types'
+import React from 'react';
+import propTypes from 'prop-types';
 
 const Categories = React.memo(function Categories({ activeCategory, items, onSelectCategory }) {
-
   return (
     <div className="categories">
       <ul>
-        <li className={activeCategory === null ? 'active' : ''} onClick={() => onSelectCategory(null)}>Все</li>
+        <li
+          className={activeCategory === null ? 'active' : ''}
+          onClick={() => onSelectCategory(null)}>
+          Все
+        </li>
         {items &&
           items.map((name, index) => (
             <li
@@ -17,8 +20,8 @@ const Categories = React.memo(function Categories({ activeCategory, items, onSel
             </li>
           ))}
       </ul>
-    </div >
-  )
+    </div>
+  );
 });
 
 Categories.propTypes = {
@@ -29,4 +32,4 @@ Categories.propTypes = {
 
 Categories.defaultProps = { activeCategory: null, items: [] };
 
-export default Categories
+export default Categories;

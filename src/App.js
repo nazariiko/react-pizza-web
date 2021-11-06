@@ -7,8 +7,6 @@ import { Home, Cart } from './pages'
 
 function App() {
 
-  // console.log('App rendered');
-
   return(
     <div className="wrapper">
     <Header />
